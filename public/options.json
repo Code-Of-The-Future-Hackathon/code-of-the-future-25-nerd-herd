@@ -2,8 +2,8 @@
     "monitor": 11,
     "keyboard": 12,
     "mouse": 13,
-    "USB cable": 14,
-    "Marker": 21,
-    "Paper": 22
+    "USB_cable": 14,
+    "marker": 21,
+    "paper": 22
 
 }
