@@ -1,4 +1,4 @@
-{
+const options = {
     "monitor": 11,
     "keyboard": 12,
     "mouse": 13,
@@ -7,3 +7,5 @@
     "Paper": 22
 
 }
+
+export {options}
