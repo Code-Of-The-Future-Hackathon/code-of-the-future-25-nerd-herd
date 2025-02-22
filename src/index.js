@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< HEAD
 //import QrCodeGenerator from './components/QrCodeGenerator/QrCodeGenerator';
 import App from './App';
+=======
+import App from './App.js'
+>>>>>>> e394a9eefba6cdc0cd643faf54172194ce1294bc
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
