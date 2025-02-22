@@ -11,6 +11,7 @@
     "qr-scanner": "^1.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-qr-code": "^2.0.15",
     "react-qr-reader": "^3.0.0-beta-1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
