@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import QrScanner from './components/QrScanner';
 import './components/QrCodeGenerator/QrCodeGenerator';
 import QrCodeGenerator from './components/QrCodeGenerator/QrCodeGenerator';
 
