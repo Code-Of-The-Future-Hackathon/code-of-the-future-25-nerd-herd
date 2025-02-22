@@ -3,18 +3,46 @@ import QRCode from 'react-qr-code';
 import './QrCodeGenerator.css';
 
 
-function QrCodeGenerator(user, options, amounts) {
+function QrCodeGenerator({ user, formData }) {
+    
+    const OPTIONS_ID_CODE_LENGTH = 3;
+    const AMOUNT_CODE_LENGTH = 2;
+    
     const [key, setKey] = useState("");
     const [value, setValue] = useState("");
     const [qrIsVisible, setQrIsVisible] = useState(false);
+    const [options, setOptions] = useState({});
 
+
+    useEffect(() => {
+        fetch("options.json")
+            .then((response) => response.json())
+            .then((data) => {
+                setOptions(data);
+            })
+            .catch((error) => console.error("Error loading options.json:", error));
+    }, []);
 
     const handleQrCodeGenerator = () => {
         if (!key.trim()) {
             return;
         }
+
+        var data = "";
         if (user !== undefined) {
-            setValue(String(user));
+            /* data += String(user);  not implemented*/
+            for (const option in formData ){
+                var optionId = String(options[option]);
+                for (var i = optionId.length; i < OPTIONS_ID_CODE_LENGTH; i++){
+                    data += "0";
+                }
+                data += optionId;
+                for (var i = optionId.length; i < AMOUNT_CODE_LENGTH; i++){
+                    data += "0";
+                }
+                data += String(formData[option]);
+            }
+            setValue(data);
             setQrIsVisible(true);
         } else {
             setQrIsVisible(false);
