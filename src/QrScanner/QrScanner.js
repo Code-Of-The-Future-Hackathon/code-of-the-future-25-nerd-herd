@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
-import "./e.css";
+import "./QrScanner.css";
 import CryptoJS from "crypto-js";
 
 export default function QrScanner() {

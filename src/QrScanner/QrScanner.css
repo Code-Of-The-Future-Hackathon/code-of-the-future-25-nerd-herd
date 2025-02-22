@@ -1,0 +1,41 @@
+
+body{
+    background-image: linear-gradient(to bottom right, #f57dc3, #ff8629, #6ef56c);
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+h1{
+    text-align: center;
+    font-family: "Arial";
+    text-shadow: 3px 3px 5px peru;
+    font-size: 4vw;
+    margin-top: 13px;
+}
+
+p{
+    text-align: center;
+    font-family: "Arial";
+    text-shadow: 3px 3px 5px peru;
+    font-size: 2vw;
+}
+
+.scanResult{
+    height: 100%;
+    text-align: center;
+    font-family: 'Arial';
+    font-weight: bold;
+
+}
+
+#reader{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+}
