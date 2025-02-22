@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import './components/QrCodeGenerator/QrCodeGenerator';
-import './components/QrScanner/QrScanner.js'
 import QrCodeGenerator from './components/QrCodeGenerator/QrCodeGenerator';
+import QrScanner from './components/QrScanner/QrScanner.js';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <QrCodeGenerator user={user} formData={formData} />
+      <QrScanner/>
     </div>
   );
 }
