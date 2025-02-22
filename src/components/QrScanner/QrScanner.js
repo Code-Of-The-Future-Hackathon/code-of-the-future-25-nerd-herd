@@ -37,7 +37,7 @@ export default function QrScanner() {
         }
         const success = result => {
 
-            setScanResult(result);
+            setScanResult(decryptWithSecretKey(result));
             scannerRef.current.clear();
         }
 
@@ -46,43 +46,56 @@ export default function QrScanner() {
 
 
     const decryptWithSecretKey = async (encryptedText) => {
-
         try {
-            var secretKey;
+            console.log("Encrypted Text Received:", encryptedText); // Debugging
+    
+            // Fetch secret key
             const response = await fetch("secret.json");
             const data = await response.json();
-
             if (!data.secretKey) {
                 throw new Error("Secret key not found in secret.json");
             }
+            const secretKey = CryptoJS.enc.Utf8.parse(data.secretKey); // Match encryption method
+            console.log("Secret Key:", secretKey.toString(CryptoJS.enc.Base64)); // Debugging
+    
+            // Decode Base64
+            const encryptedData = CryptoJS.enc.Base64.parse(encryptedText);
+            const encryptedBytes = encryptedData.words;
             
-
-            const fullCipher = CryptoJS.enc.Base64.parse(encryptedText);
-
-            const iv = CryptoJS.lib.WordArray.create(fullCipher.words.slice(0, 4), 16);
-            const ciphertext = CryptoJS.lib.WordArray.create(fullCipher.words.slice(4));
-
-            const cipherParams = CryptoJS.lib.CipherParams.create({
-                ciphertext: ciphertext,
-            });
-
+            if (!encryptedBytes || encryptedBytes.length < 4) {
+                throw new Error("Invalid encrypted text format.");
+            }
+    
+            // Extract IV and ciphertext
+            const iv = CryptoJS.lib.WordArray.create(encryptedBytes.slice(0, 4), 16);
+            const ciphertext = CryptoJS.lib.WordArray.create(encryptedBytes.slice(4));
+    
+            // Decrypt
             const decrypted = CryptoJS.AES.decrypt(
-                cipherParams,
-                CryptoJS.enc.Hex.parse(secretKey),
+                { ciphertext: ciphertext },
+                secretKey,
                 {
                     iv: iv,
                     padding: CryptoJS.pad.Pkcs7,
                     mode: CryptoJS.mode.CBC,
                 }
             );
-
-            // Return decrypted text in UTF-8 format
-            setScanResult(decrypted.toString(CryptoJS.enc.Utf8));
+    
+            // Convert to UTF-8 and return
+            const decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
+            if (!decryptedText) {
+                throw new Error("Decryption resulted in an empty string. Possible incorrect key?");
+            }
+    
+            console.log("Decryption successful:", decryptedText);
+            return decryptedText;
         } catch (error) {
             console.error("Decryption error:", error);
-            return;
+            return "Decryption Failed";
         }
     };
+    
+    
 
 
     return (
