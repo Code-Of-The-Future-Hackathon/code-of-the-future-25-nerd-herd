@@ -23,6 +23,19 @@ function QrCodeGenerator({ user, formData }) {
             .catch((error) => console.error("Error loading options.json:", error));
     }, []);
 
+
+    const getFormattedDate = () => {
+        const now = new Date();
+    
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0'); 
+        const year = now.getFullYear();
+        const hour = String(now.getHours()).padStart(2, '0'); 
+        const minute = String(now.getMinutes()).padStart(2, '0'); 
+    
+        return `${day}${month}${year}${hour}${minute}`;
+    };
+
     const handleQrCodeGenerator = () => {
         if (!key.trim()) {
             return;
@@ -30,18 +43,15 @@ function QrCodeGenerator({ user, formData }) {
 
         var data = "";
         if (user !== undefined) {
-            /* data += String(user);  not implemented*/
+            data += String("00000000"); //here is supposed to be user id
             for (const option in formData ){
-                var optionId = String(options[option]);
-                for (var i = optionId.length; i < OPTIONS_ID_CODE_LENGTH; i++){
-                    data += "0";
-                }
+                var optionId = String(options[option]).padStart(OPTIONS_ID_CODE_LENGTH, '0');
+                var optionCount = String(formData[option]).padStart(AMOUNT_CODE_LENGTH, '0');
                 data += optionId;
-                for (var i = optionId.length; i < AMOUNT_CODE_LENGTH; i++){
-                    data += "0";
-                }
-                data += String(formData[option]);
+                data += optionCount;
             }
+            const formattedDate = getFormattedDate();
+            data += formattedDate;
             setValue(data);
             setQrIsVisible(true);
         } else {
