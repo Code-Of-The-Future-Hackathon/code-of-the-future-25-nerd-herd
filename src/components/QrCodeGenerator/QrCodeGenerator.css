@@ -1,5 +1,86 @@
-.qrcode__image{
-    border: 5px solid #000;
+.qrcode__container {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.qrcode__container--parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.qrcode__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.qrcode__button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.qrcode__download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.qrcode__image {
+    border: 5px solid #ddd;
+    border-radius: 10px;
     padding: 10px;
-    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    .qrcode__container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .qrcode__button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .qrcode__image {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 400px) {
+    .qrcode__button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .qrcode__image {
+        .qrcode__image {
+            width: 80%;
+            max-width: 200px;
+        }
+    }
 }
