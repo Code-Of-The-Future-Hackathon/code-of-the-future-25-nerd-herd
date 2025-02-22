@@ -76,22 +76,18 @@ function QrCodeGenerator({ user, formData }) {
 
     const handleQrCodeGenerator = async () => {
         let data = "";
-        if (user !== undefined) {
-            data += String("00000000");
-            for (const option in formData) {
-                let optionId = String(options[option]).padStart(OPTIONS_ID_CODE_LENGTH, '0');
-                let optionCount = String(formData[option]).padStart(AMOUNT_CODE_LENGTH, '0');
-                data += optionId;
-                data += optionCount;
-            }
-            const formattedDate = getFormattedDate();
-            data += formattedDate;
-            setValue(await encryptWithSecretKey(data));
-            setQrIsVisible(true);
-        } else {
-            setQrIsVisible(false);
-            alert("Key not found in options.json");
+
+        data += String("00000000");
+        for (const option in formData) {
+            let optionId = String(options[option]).padStart(OPTIONS_ID_CODE_LENGTH, '0');
+            let optionCount = String(formData[option]).padStart(AMOUNT_CODE_LENGTH, '0');
+            data += optionId;
+            data += optionCount;
         }
+        const formattedDate = getFormattedDate();
+        data += formattedDate;
+        setValue(await encryptWithSecretKey(data));
+        setQrIsVisible(true);
     };
 
     return (
