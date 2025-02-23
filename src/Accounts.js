@@ -1,29 +1,34 @@
 const accounts = [
-    {
-      "userId": "12623200",
-      "password": "1",
-      "name":"Tymur Skochylov"
-    },
-    {
-      "userId": "10101010",
-      "password": "password2",
-      "name":"Borislav Dyankov"
-    },
-    {
-      "userId": "10102010",
-      "password": "password2",
-      "name":"Borislav"
-    },
-    {
-      "userId": "90909090",
-      "password": "password3",
-      "name":"Stefka Todorova"
-    },
-    {
-        "userId": "90909010",
-        "password": "password3",
-        "name":"Silvia Encheva"
-      }
-  ]
+  { "userId": "12345678", "password": "pass1", "name": "Alice Johnson" },
+  { "userId": "23456789", "password": "pass2", "name": "Bob Smith" },
+  { "userId": "34567890", "password": "pass3", "name": "Charlie Brown" },
+  { "userId": "45678901", "password": "pass4", "name": "David White" },
+  { "userId": "56789012", "password": "pass5", "name": "Emma Davis" },
+  { "userId": "67890123", "password": "pass6", "name": "Frank Moore" },
+  { "userId": "78901234", "password": "pass7", "name": "Grace Wilson" },
+  { "userId": "89012345", "password": "pass8", "name": "Henry Thomas" },
+  { "userId": "90123456", "password": "pass9", "name": "Isabella Lewis" },
+  { "userId": "11223344", "password": "pass10", "name": "Jack Hall" },
+  { "userId": "22334455", "password": "pass11", "name": "Karen Allen" },
+  { "userId": "33445566", "password": "pass12", "name": "Liam Scott" },
+  { "userId": "44556677", "password": "pass13", "name": "Mia Adams" },
+  { "userId": "55667788", "password": "pass14", "name": "Noah Baker" },
+  { "userId": "66778899", "password": "pass15", "name": "Olivia Perez" },
+  { "userId": "77889900", "password": "pass16", "name": "Paul Carter" },
+  { "userId": "88990011", "password": "pass17", "name": "Quinn Edwards" },
+  { "userId": "99001122", "password": "pass18", "name": "Rachel Green" },
+  { "userId": "10111213", "password": "pass19", "name": "Samuel Harris" },
+  { "userId": "12131415", "password": "pass20", "name": "Tina Martinez" },
+  { "userId": "13141516", "password": "pass21", "name": "Uma Robinson" },
+  { "userId": "14151617", "password": "pass22", "name": "Victor Clark" },
+  { "userId": "15161718", "password": "pass23", "name": "Wendy Rodriguez" },
+  { "userId": "16171819", "password": "pass24", "name": "Xander Stewart" },
+  { "userId": "17181920", "password": "pass25", "name": "Yasmine Parker" },
+  { "userId": "18192021", "password": "pass26", "name": "Zachary Evans" },
+  { "userId": "19202122", "password": "pass27", "name": "Amanda Hughes" },
+  { "userId": "20212223", "password": "pass28", "name": "Brian Murphy" },
+  { "userId": "21222324", "password": "pass29", "name": "Catherine Foster" },
+  { "userId": "22232425", "password": "pass30", "name": "Daniel Ward" }
+];
 
-  export {accounts}
+export { accounts };

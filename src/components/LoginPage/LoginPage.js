@@ -17,17 +17,18 @@ function Login() {
     const [bool, setBool] = useState(false);
 
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const user = accounts.find(
-          (account) => account.name === userName && account.password === password
+          (account) => account.userId === userId && account.password === password
         );
         console.log(accounts);
         if (user) {
           setSuccessMessage('Login successful!');
           setErrorMessage('');
-          setUserId(user.userId); // Set the userName here using the found account's name.
           setPassword('');
+          setBool(true);
         } else {
           setErrorMessage('Invalid ID or password!');
           setSuccessMessage('');
@@ -41,42 +42,47 @@ function Login() {
 
     return (
         <div className="App">
-            {!showLoginForm && (
-                <header className="login-header">
-                    <h1>Welcome to NAME</h1>
-                    <p>Used for ...</p>
-                    <button className="login-btn" onClick={handleLoginClick}>
-                        Login
-                    </button>
-                </header>
+            {!bool ? (  // Show login UI only if not logged in
+                <>
+                    {!showLoginForm && (
+                        <header className="login-header">
+                            <h1>Welcome to USA</h1>
+                            <p>Make administration great again!</p>
+                            <button className="login-btn" onClick={handleLoginClick}>
+                                Login
+                            </button>
+                        </header>
+                    )}
+    
+                    {showLoginForm && (
+                        <div className="login-container">
+                            <h2>Login</h2>
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type="text"
+                                    placeholder="User ID"
+                                    value={userId}
+                                    onChange={(e) => setUserId(e.target.value)}
+                                    required
+                                />
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                                <button type="submit">Login</button>
+                            </form>
+    
+                            {errorMessage && <p className="error">{errorMessage}</p>}
+                            {successMessage && <p className="success">{successMessage}</p>}
+                        </div>
+                    )}
+                </>
+            ) : (
+                <Form userId={userId} />
             )}
-
-            {showLoginForm && (
-                <div className="login-container">
-                    <h2>Login</h2>
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            placeholder="User Name"
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <button type="submit">Login</button>
-                    </form>
-
-                    {errorMessage && <p className="error">{errorMessage}</p>}
-                    {successMessage && <p className="success">{successMessage && <Form userId={userId}  />}</p>}
-                </div>
-            )}
-
         </div>
     );
 }

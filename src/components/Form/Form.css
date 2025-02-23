@@ -1,4 +1,12 @@
 
+* {
+    overflow: visible !important;
+}
+
+#question{
+    margin-top: 50px;
+}
+
 /* General Body Styles */
 body {
     font-family: Arial, sans-serif;
@@ -16,12 +24,14 @@ section {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    overflow: visible;
 }
 
 /* Heading Styling */
 h2 {
     font-size: 2rem;
     text-align: center;
+    margin-top: 20px;
     margin-bottom: 20px;
     color: #333;
 }
