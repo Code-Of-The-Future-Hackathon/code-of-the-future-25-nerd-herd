@@ -5,14 +5,9 @@ import QrCodeGenerator from './components/QrCodeGenerator/QrCodeGenerator';
 import QrScanner from './components/QrScanner/QrScanner.js';
 
 function App() {
-  const [formData, setFormData] = useState({
-    mouse: 28,
-    Paper: 5,
-  });
-  const user = 'User123';
 
   return (
-    <div>
+    <div className='App'>
       <QrScanner/>
     </div>
   );

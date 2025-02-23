@@ -136,9 +136,13 @@ export default function QrScanner() {
                 });
             }
 
+            const prettifyDate = (date) => {
+                return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+            }
+
             // Finding the user
             response["user"] = users.find((e) => e.userId == user);
-            response["date"] = date_time.toLocaleDateString("en-US");
+            response["date"] = prettifyDate(date_time)
 
             return (
                 <div>
@@ -150,7 +154,7 @@ export default function QrScanner() {
                 </div>
             )
         } catch (error) {
-            console.log("Parsing successful:")
+            console.log("Parsing unsuccessful:")
         }
     };
 
